@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">IndiashelterTask</string>
+
+    <string name="user_name">Saurabh Singh Sengar</string>
+    <string name="user_phone">+91 9452615148</string>
+    <string name="terms_conditions">T&amp;C</string>
+    <string name="back">Back</string>
+    <string name="ReferandEarn">Refer to Earn </string>
+    <string name="ReferandEarnNotes">Check Phonebook below.\nFind Friends you can refer &amp; win assured rewards.</string>
+
+</resources>

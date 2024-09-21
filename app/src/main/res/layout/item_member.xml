@@ -1,0 +1,84 @@
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/dimen_16"
+    android:layout_marginTop="12dp"
+    android:layout_marginEnd="@dimen/dimen_16"
+    android:layout_marginBottom="12dp"
+    android:background="@color/gray_bg"
+    app:cardCornerRadius="@dimen/dimen_16"
+    app:cardElevation="@dimen/dimen_8"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dimen_16">
+
+        <TextView
+            android:id="@+id/img_user"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/shape_circle"
+            android:gravity="center"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:text="AB"
+            android:textStyle="bold"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_16"
+            android:text="@string/user_name"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dimen_16_sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/img_user"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/phone"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dimen_16"
+            android:layout_marginTop="@dimen/dimen_8"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@string/user_phone"
+            android:textColor="@android:color/darker_gray"
+            app:layout_constraintStart_toEndOf="@id/img_user"
+            app:layout_constraintTop_toBottomOf="@id/name" />
+
+        <TextView
+            android:id="@+id/invite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="0dp"
+            android:text="Invite"
+            android:textColor="@color/purple_700"
+        app:layout_constraintStart_toEndOf="@id/phone"
+        app:layout_constraintTop_toTopOf="@id/phone" />
+
+        <ImageView
+            app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/img_whats"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:layout_marginTop="12dp"
+            android:src="@drawable/whatsapp"
+            tools:ignore="MissingConstraints" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

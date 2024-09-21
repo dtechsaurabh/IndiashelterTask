@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:id="@+id/nestedScrollView"
+    android:layout_height="match_parent"
+    tools:context=".ContactHome">
+
+    <!-- FrameLayout to handle floating elements -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- Main ConstraintLayout for content -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/skyblue">
+
+            <!-- First section with toolbar -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/horizontalLayout1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <!-- Location Icon (ImageView) -->
+                <ImageView
+                    android:id="@+id/icon_location"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:tint="@color/black"
+                    android:src="@drawable/ic_arrow_back"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    tools:ignore="UseAppTint" />
+
+                <!-- Title TextView -->
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:text="@string/ReferandEarn"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/dimen_16_sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@id/icon_location"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/icon_three_dots"
+                    app:layout_constraintHorizontal_bias="0.5" />
+
+                <!-- Terms and Conditions TextView -->
+                <TextView
+                    android:id="@+id/icon_three_dots"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:text="@string/terms_conditions"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- Second section with form fields -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/horizontalLayout2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                app:layout_constraintTop_toBottomOf="@id/horizontalLayout1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <!-- Name EditText -->
+                <EditText
+                    android:background="@drawable/edittext_border"
+                    android:layout_margin="@dimen/dimen_16"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="10dp"
+                    android:paddingLeft="5dp"
+                    android:textColorHint="@color/black"
+                    android:id="@+id/editTextName"
+                    android:textColor="@color/black"
+                    android:layout_width="match_parent"
+                    android:hint="Enter Name"
+                    android:inputType="textPersonName"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <!-- Phone EditText -->
+                <EditText
+                    android:textColor="@color/black"
+
+                    android:paddingLeft="5dp"
+                    android:background="@drawable/edittext_border"
+                    android:layout_margin="@dimen/dimen_16"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/editTextPhone"
+                    android:layout_width="match_parent"
+                    android:hint="Enter Mobile Number"
+                    android:inputType="phone"
+                    android:textColorHint="@color/black"
+
+                    app:layout_constraintTop_toBottomOf="@id/editTextName"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <!-- Email EditText -->
+                <EditText
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+
+                    android:paddingLeft="5dp"
+                    android:background="@drawable/edittext_border"
+                    android:layout_margin="@dimen/dimen_16"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/editTextEmail"
+                    android:layout_width="match_parent"
+                    android:hint="Enter Email ID"
+                    android:inputType="textEmailAddress"
+                    app:layout_constraintTop_toBottomOf="@id/editTextPhone"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <!-- Submit Button -->
+                <Button
+                    style="@style/button"
+                    android:layout_margin="@dimen/dimen_16"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/submitButton"
+                    android:layout_width="match_parent"
+                    android:text="Submit"
+                    app:layout_constraintTop_toBottomOf="@id/editTextEmail"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <!-- Form EditText -->
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:padding="8dp"
+                    android:id="@+id/imageRV"
+                    android:layout_margin="@dimen/dimen_16"
+                    android:layout_width="match_parent"
+                    android:layout_height="210dp"
+                    android:visibility="gone"
+                    app:layout_constraintTop_toBottomOf="@id/submitButton"
+                    app:layoutManager="com.google.android.material.carousel.CarouselLayoutManager"
+                    android:layout_centerInParent="true"/>
+                <!-- Merged TextView -->
+                <TextView
+                    android:gravity="center"
+                    android:padding="5dp"
+                    android:background="@drawable/textview_border"
+                    android:layout_margin="@dimen/dimen_16"
+                    android:layout_height="55dp"
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/mergedTextView"
+                    android:layout_width="match_parent"
+                    android:lines="2"
+                    android:text="@string/ReferandEarnNotes"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/dimen_16_sp"
+                    app:layout_constraintTop_toBottomOf="@id/imageRV"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- Third section with RecyclerView -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/horizontalLayout3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@color/gray_bg"
+                app:layout_constraintTop_toBottomOf="@id/horizontalLayout2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <!-- User Name TextView -->
+                <TextView
+                    android:gravity="center"
+                    android:id="@+id/totalNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="26dp"
+                    android:text="@string/user_name"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/dimen_16_sp"
+                    android:textStyle="bold"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <!-- Search CardView with SearchView -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/materialCardView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="8dp"
+                    android:layout_marginTop="16dp"
+                    app:cardElevation="12dp"
+                    app:cardUseCompatPadding="true"
+                    app:layout_constraintTop_toBottomOf="@id/totalNumber"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+                    <androidx.appcompat.widget.SearchView
+                        android:id="@+id/searchView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:iconifiedByDefault="false"
+                        app:queryHint="Search Name or Mobile No." />
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- RecyclerView for List of Members -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    tools:listitem="@layout/item_member"
+
+                    android:layout_marginBottom="8dp"
+                    app:layout_constraintTop_toBottomOf="@id/materialCardView"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <!-- Scroll-to-Top Button (AppCompatImageButton) -->
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/up_arrow2"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:src="@drawable/ic_arrow_up"
+                    android:background="@drawable/shape_circle"
+                    android:layout_margin="16dp"
+                    android:elevation="8dp"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/up_arrow1"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/ic_arrow_up"
+            android:background="@drawable/shape_circle"
+            android:layout_gravity="bottom|center"
+            android:layout_marginBottom="16dp"
+            android:elevation="8dp"
+            android:visibility="gone"
+            />
+        <ProgressBar
+            android:id="@+id/loadingProgressBar2"
+            android:layout_width="match_parent"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone" />
+        <RelativeLayout
+            android:layout_marginTop="230dp"
+            android:layout_width="match_parent"
+            android:layout_gravity="center"
+
+
+            android:layout_height="wrap_content">
+
+            <!-- Other views here -->
+
+            <ProgressBar
+                android:id="@+id/loadingProgressBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:visibility="gone" />
+
+            <TextView
+
+                android:id="@+id/loadingMessageTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/pink"
+                android:text="Please wait, contacts are loading..."
+                android:layout_below="@id/loadingProgressBar"
+                android:layout_centerHorizontal="true"
+                android:visibility="gone" /> <!-- Initially hidden -->
+
+        </RelativeLayout>
+    </FrameLayout>
+</androidx.core.widget.NestedScrollView>
