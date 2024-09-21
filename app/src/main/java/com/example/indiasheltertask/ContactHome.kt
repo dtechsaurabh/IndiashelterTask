@@ -153,12 +153,10 @@ class ContactHome : AppCompatActivity(), ContactAdapter.OnItemClickListener {
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
 
-                // If scrolling down, show the button, if at the top, hide it
                 if (dy > 0) {
                     scrollToTopButton.visibility = View.VISIBLE
                 }
 
-                // If at the top, hide the button
                 if (!recyclerView.canScrollVertically(-1)) {
                     scrollToTopButton.visibility = View.GONE
                 }
@@ -168,23 +166,19 @@ class ContactHome : AppCompatActivity(), ContactAdapter.OnItemClickListener {
 
 
     private fun setupScrollToTopButton() {
-        // Listen to NestedScrollView's scroll changes
         nestedScrollView.setOnScrollChangeListener(NestedScrollView.OnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
-            // If scrolling down (new Y > old Y), show the button
             if (scrollY > oldScrollY) {
                 scrollToTopButton.visibility = View.VISIBLE
             }
 
-            // If scrolling up and near the top (scrollY <= 100), hide the button
             if (scrollY <= 100) {
                 scrollToTopButton.visibility = View.GONE
             }
         })
 
-        // Set the click listener for the button to scroll to the top
         scrollToTopButton.setOnClickListener {
-            nestedScrollView.smoothScrollTo(0, 0) // Scrolls to the top of the NestedScrollView
-            scrollToTopButton.visibility = View.GONE // Hide the button when at the top
+            nestedScrollView.smoothScrollTo(0, 0)
+            scrollToTopButton.visibility = View.GONE
         }
     }
 
@@ -209,8 +203,8 @@ class ContactHome : AppCompatActivity(), ContactAdapter.OnItemClickListener {
             else -> {
                 showSuccessDialog()
                 if (isFirstSubmit) {
-                    imageRV.visibility = View.VISIBLE // Show the image RecyclerView
-                    isFirstSubmit = false // Set flag to false after first submission
+                    imageRV.visibility = View.VISIBLE
+                    isFirstSubmit = false
                 }
             }
         }
@@ -229,7 +223,6 @@ class ContactHome : AppCompatActivity(), ContactAdapter.OnItemClickListener {
             }
             .setNeutralButton("Learn More") { dialog, _ ->
                 dialog.dismiss()
-                // Optional: open a webpage here
             }
             .show()
     }
@@ -297,9 +290,8 @@ class ContactHome : AppCompatActivity(), ContactAdapter.OnItemClickListener {
                 }
             }
 
-            // Switch to the Main thread to update the UI
             withContext(Dispatchers.Main) {
-                hideLoading() // Hide loading after fetching contacts
+                hideLoading()
                 filteredList.addAll(arrayList)
                 rcvAdapter.notifyDataSetChanged()
                 totalContactsTextView.text = "Swipe up to see: ${arrayList.size} friends you can invite"
@@ -336,7 +328,6 @@ class ContactHome : AppCompatActivity(), ContactAdapter.OnItemClickListener {
     }
 
     override fun onItemClick(position: Int) {
-        // Handle item click
     }
 
     override fun onWhatsAppClick(position: Int) {

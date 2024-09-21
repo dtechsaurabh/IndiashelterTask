@@ -26,22 +26,20 @@ class SplashScreen : AppCompatActivity() {
 
         if (isInternetConnected()) {
             if (hasRequiredPermissions()) {
-                proceedToNextActivity()  // Both internet and permissions are okay
+                proceedToNextActivity()
             } else {
-                requestPermissions() // Permissions not granted, request them
+                requestPermissions()
             }
         } else {
-            showInternetDialog() // Internet is not connected
+            showInternetDialog()
         }
     }
 
-    // Check if the required permissions are granted
     private fun hasRequiredPermissions(): Boolean {
         return ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS) == PackageManager.PERMISSION_GRANTED &&
                 ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_CONTACTS) == PackageManager.PERMISSION_GRANTED
     }
 
-    // Request the permissions
     private fun requestPermissions() {
         ActivityCompat.requestPermissions(
             this,
@@ -50,14 +48,12 @@ class SplashScreen : AppCompatActivity() {
         )
     }
 
-    // Check if the device is connected to the internet
     private fun isInternetConnected(): Boolean {
         val connectivityManager = getSystemService(CONNECTIVITY_SERVICE) as ConnectivityManager
         val activeNetwork = connectivityManager.activeNetworkInfo
         return activeNetwork?.isConnectedOrConnecting == true
     }
 
-    // Show a dialog if the internet is not available
     private fun showInternetDialog() {
         AlertDialog.Builder(this)
             .setTitle("Internet Required")
@@ -69,7 +65,6 @@ class SplashScreen : AppCompatActivity() {
             .show()
     }
 
-    // Proceed to the next activity if both permissions and internet are okay
     private fun proceedToNextActivity() {
         val isUserLoggedIn = SharedPref.getBoolean(PrefConstants.IS_USER_LOGGED_IN)
         val nextActivity = if (isUserLoggedIn) {
@@ -82,31 +77,26 @@ class SplashScreen : AppCompatActivity() {
         finish()
     }
 
-    // Handle the result from the permissions request
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == PERMISSIONS_REQUEST_CODE) {
             if (grantResults.isNotEmpty() && grantResults.all { it == PackageManager.PERMISSION_GRANTED }) {
-                // Permissions granted, now check if the internet is connected
                 if (isInternetConnected()) {
-                    proceedToNextActivity() // Everything is OK, proceed
+                    proceedToNextActivity()
                 } else {
-                    showInternetDialog() // Internet not connected
+                    showInternetDialog()
                 }
             } else {
                 if (grantResults.any { it == PackageManager.PERMISSION_DENIED }) {
-                    // Handle case where permissions are denied
                     if (permissions.indices.any {
                             grantResults[it] == PackageManager.PERMISSION_DENIED &&
                                     !ActivityCompat.shouldShowRequestPermissionRationale(this, permissions[it])
                         }) {
-                        // User selected "Don't ask again"
                         val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
                         val uri = Uri.fromParts("package", packageName, null)
                         intent.data = uri
                         startActivity(intent)
                     } else {
-                        // Permissions denied, re-request
                         requestPermissions()
                     }
                 }
